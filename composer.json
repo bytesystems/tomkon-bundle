@@ -1,5 +1,5 @@
 {
-    "name": "bytesystems/tomkonbundle",
+    "name": "bytesystems/tomkon-bundle",
     "type": "contao-bundle",
     "description": "Bundle für Tomkon Web",
     "license": "",
@@ -28,16 +28,16 @@
         "symfony/phpunit-bridge": "^3.2"
     },
     "extra": {
-        "contao-manager-plugin": "Contao\\TomkonBundle\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "bytesystems\\TomkonBundle\\ContaoManager\\Plugin"
     },
     "autoload": {
         "psr-4": {
-            "Contao\\TomkonBundle\\": "src/"
+            "bytesystems\\TomkonBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Contao\\TomkonBundle\\Tests\\": "tests/"
+            "bytesystems\\TomkonBundle\\Tests\\": "tests/"
         }
     },
     "support": {

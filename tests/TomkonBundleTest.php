@@ -8,17 +8,17 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace Contao\SkeletonBundle\Tests;
+namespace bytesystems\TomkonBundle\Tests;
 
-use Contao\SkeletonBundle\TomkonBundle;
+use bytesystems\TomkonBundle\TomkonBundle;
 use PHPUnit\Framework\TestCase;
 
-class ContaoSkeletonBundleTest extends TestCase
+class TomkonBundleTest extends TestCase
 {
     public function testCanBeInstantiated()
     {
         $bundle = new TomkonBundle();
 
-        $this->assertInstanceOf('Contao\SkeletonBundle\TomkonBundle', $bundle);
+        $this->assertInstanceOf('bytesystems\TomkonBundle\TomkonBundle', $bundle);
     }
 }
