@@ -1,6 +1,8 @@
 <?php
 
 
+use Contao\CoreBundle\DataContainer\PaletteManipulator;
+
 $arrDca = &$GLOBALS['TL_DCA']['tl_member'];
 
 $arrDca['list']['operations']['editContent'] = [
@@ -10,19 +12,13 @@ $arrDca['list']['operations']['editContent'] = [
 ];
 
 
+Contao\CoreBundle\DataContainer\PaletteManipulator::create()
+    ->addLegend('hk_legend','personal_legend',Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
+    ->addField('hk_number', 'hk_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_BEFORE)
+    ->applyToPalette('default', 'tl_member');
+
 // Modify the palette
-$arrDca['palettes']['default'] = '{hk_legend},hk_number;' . $arrDca['palettes']['default'];
-
-
-// Add the field meta data
-$GLOBALS['TL_DCA']['tl_member']['fields']['hk_number'] = array
-(
-'label'     => &$GLOBALS['TL_LANG']['tl_member']['hk_number'],
-'exclude'   => true,
-'inputType' => 'text',
-'eval'      => array('mandatory'=>false, 'maxlength'=>16,'tl_class'=>'w50'),
-'sql'       => "varchar(16) NOT NULL default ''"
-);
+//$arrDca['palettes']['default'] = '{hk_legend},hk_number;' . $arrDca['palettes']['default'];
 
 $arrFields = [
     'hk_number' => [
