@@ -12,13 +12,13 @@ $arrDca['list']['operations']['editContent'] = [
 ];
 
 //
-//PaletteManipulator::create()
-//    ->addLegend('hk_legend','personal_legend',PaletteManipulator::POSITION_AFTER)
-//    ->addField('hk_number', 'company', PaletteManipulator::POSITION_APPEND)
-//    ->applyToPalette('default', 'tl_member');
+PaletteManipulator::create()
+    ->addLegend('hk_legend','personal_legend',PaletteManipulator::POSITION_AFTER)
+    ->addField('hk_number', 'company', PaletteManipulator::POSITION_APPEND)
+    ->applyToPalette('default', 'tl_member');
 
 // Modify the palette
-$arrDca['palettes']['default'] = '{hk_legend},hk_number;' . $arrDca['palettes']['default'];
+//$arrDca['palettes']['default'] = '{hk_legend},hk_number;' . $arrDca['palettes']['default'];
 
 $arrDca['fields']['hk_number']
      = [
