@@ -12,9 +12,9 @@ $arrDca['list']['operations']['editContent'] = [
 ];
 
 
-Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addLegend('hk_legend','personal_legend',Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
-    ->addField('hk_number', 'hk_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_BEFORE)
+PaletteManipulator::create()
+    ->addLegend('hk_legend','personal_legend',PaletteManipulator::POSITION_AFTER)
+    ->addField('hk_number', 'hk_legend', PaletteManipulator::POSITION_BEFORE)
     ->applyToPalette('default', 'tl_member');
 
 // Modify the palette
