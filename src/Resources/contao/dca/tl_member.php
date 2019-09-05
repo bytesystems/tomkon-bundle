@@ -1,12 +1,18 @@
 <?php
 
+
+$arrDca = &$GLOBALS['TL_DCA']['tl_member'];
+
+$arrDca['list']['operations']['editContent'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_member']['content'],
+    'href'  => 'table=tl_content',
+    'icon'  => 'article.gif'
+];
+
+
 // Modify the palette
-$GLOBALS['TL_DCA']['tl_member']['palettes']['default'] = str_replace
-(
-',company,',
-',hk_number,company',
-$GLOBALS['TL_DCA']['tl_member']['palettes']['default']
-);
+$arrDca['palettes']['default'] = '{hk_legend},hk_number;' . $arrDca['palettes']['default'];
+
 
 // Add the field meta data
 $GLOBALS['TL_DCA']['tl_member']['fields']['hk_number'] = array
@@ -17,3 +23,38 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['hk_number'] = array
 'eval'      => array('mandatory'=>false, 'maxlength'=>16,'tl_class'=>'w50'),
 'sql'       => "varchar(16) NOT NULL default ''"
 );
+
+$arrFields = [
+    'hk_number' => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_member']['hk_number'],
+        'exclude'   => true,
+        'inputType' => 'text',
+        'eval'      => array('mandatory'=>false, 'maxlength'=>16,'tl_class'=>'w50'),
+        'sql'       => "varchar(16) NOT NULL default ''"
+    ],
+//    'memberFiles' => [
+//        'label'        => &$GLOBALS['TL_LANG']['tl_member']['memberFiles'],
+//        'inputType'    => 'fieldpalette',
+//        'foreignKey'   => 'tl_member_address.id',
+//        'relation'     => ['type' => 'hasMany', 'load' => 'eager'],
+//        'sql'          => "blob NULL",
+//        'eval'         => ['tl_class' => 'clr'],
+//        'fieldpalette' => [
+//            'config'   => [
+//                'hidePublished' => false,
+//                'table'         => 'tl_member_address',
+//            ],
+//            'list'     => [
+//                'label' => [
+//                    'fields' => ['city'],
+//                    'format' => '%s',
+//                ],
+//            ],
+//            'palettes' => [
+//                'default' => '{contact_legend},phone,fax;{address_legend},company,street,street2,postal,city,state,country,addressText',
+//            ],
+//        ],
+//    ],
+];
+
+$arrDca['fields'] = array_merge($arrDca['fields'], $arrFields);
