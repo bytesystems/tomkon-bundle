@@ -20,14 +20,14 @@ PaletteManipulator::create()
 // Modify the palette
 //$arrDca['palettes']['default'] = '{hk_legend},hk_number;' . $arrDca['palettes']['default'];
 
-$arrFields = [
-    'hk_number' => [
+$arrDca['fields']['hk_number']
+     = [
         'label'     => &$GLOBALS['TL_LANG']['tl_member']['hk_number'],
         'exclude'   => true,
         'inputType' => 'text',
         'eval'      => array('mandatory'=>false, 'maxlength'=>16,'tl_class'=>'w50'),
         'sql'       => "varchar(16) NOT NULL default ''"
-    ],
+    ];
 //    'memberFiles' => [
 //        'label'        => &$GLOBALS['TL_LANG']['tl_member']['memberFiles'],
 //        'inputType'    => 'fieldpalette',
@@ -51,6 +51,3 @@ $arrFields = [
 //            ],
 //        ],
 //    ],
-];
-
-$arrDca['fields'] = array_merge($arrDca['fields'], $arrFields);
