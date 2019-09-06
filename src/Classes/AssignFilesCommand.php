@@ -46,12 +46,34 @@ class AssignFilesCommand extends AbstractLockedCommand
         }
         return $this->statusCode;
     }
+
+    function getDirContents($dir, &$results = array()){
+        $files = scandir($dir);
+
+        foreach($files as $key => $value){
+            $path = realpath($dir.DIRECTORY_SEPARATOR.$value);
+            if(!is_dir($path)) {
+                $results[] = $path;
+            } else if($value != "." && $value != "..") {
+                getDirContents($path, $results);
+                $results[] = $path;
+            }
+        }
+
+        return $results;
+    }
+
     protected function assignFiles(): void
     {
         $rootDir = $this->getContainer()->getParameter('kernel.project_dir');
+        $dir = $rootDir."/files/tomkon/customer/";
         // Hier findet die eigentliche Verarbeitung statt.
         // Normalerweise würde hier z.B. ein Event aufgerufen.
 //        \Dbafs::addResource($filepath);
-        $this->io->text($rootDir);
+        $files = $this->getDirContents($dir);
+
+        foreach($files as $file) {
+            $this->io->text($file);
+        }
     }
 }
