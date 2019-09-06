@@ -78,7 +78,7 @@ class AssignFilesCommand extends AbstractLockedCommand
         \Dbafs::syncFiles();
 
         $files = \FilesModel::findByPath($path);
-
+        var_dump($files);
         foreach($files as $file) {
             //\Dbafs::addResource($file);
             $this->io->text($file);
