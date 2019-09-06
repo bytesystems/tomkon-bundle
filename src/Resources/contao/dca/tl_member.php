@@ -14,7 +14,7 @@ $arrDca['list']['operations']['editContent'] = [
 //
 PaletteManipulator::create()
     ->addLegend('hk_legend','personal_legend',PaletteManipulator::POSITION_AFTER)
-    ->addField('hk_number', 'company', PaletteManipulator::POSITION_APPEND)
+    ->addField('hk_number', 'hk_legend', PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('default', 'tl_member');
 
 // Modify the palette
