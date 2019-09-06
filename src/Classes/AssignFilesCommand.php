@@ -75,7 +75,7 @@ class AssignFilesCommand extends AbstractLockedCommand
         // Normalerweise würde hier z.B. ein Event aufgerufen.
 //        \Dbafs::addResource($filepath);
         $files = $this->getDirContents($dir);
-        \Dbafs::addResource($path);
+        \Dbafs::syncFiles();
         foreach($files as $file) {
             //\Dbafs::addResource($file);
             $this->io->text($file);
