@@ -83,7 +83,7 @@ class AssignFilesCommand extends AbstractLockedCommand
         }
 
 
-
+        $metaModel = \MetaModels\Factory::byTableName('mm_landingpages');
 
     }
 }
