@@ -21,7 +21,10 @@ class AssignFilesCommand extends AbstractLockedCommand
     protected function configure(): void
     {
         $commandHelp    = 'Aktualisiert Dateien';
+        $parameterHelp  = 'Verzeichnis unterhalb des Contao-Verzeichnisses, welches durchsucht werden soll.';
+        $argument       = new InputArgument('path', InputArgument::REQUIRED, $parameterHelp);
         $this->setName('tomkon:assignfiles')
+            ->setDefinition([$argument])
             ->setDescription($commandHelp);
     }
 
@@ -38,8 +41,9 @@ class AssignFilesCommand extends AbstractLockedCommand
         // Deshalb wird hier das root directory ausgelesen.
 
         */
+        $path = $input->getArgument('path');
         // Hier wird die eigentliche Verarbeitung auf gerufen.
-        $this->assignFiles();
+        $this->assignFiles($path);
         if (!empty($this->rows)) {
             $this->io->newLine();
             $this->io->table(['', 'Ouput', 'Target / Error'], $this->rows);
@@ -63,16 +67,17 @@ class AssignFilesCommand extends AbstractLockedCommand
         return $results;
     }
 
-    protected function assignFiles(): void
+    protected function assignFiles($path): void
     {
         $rootDir = $this->getContainer()->getParameter('kernel.project_dir');
-        $dir = $rootDir."/files/tomkon/customer/";
+        $dir = $rootDir."/".$path;
         // Hier findet die eigentliche Verarbeitung statt.
         // Normalerweise würde hier z.B. ein Event aufgerufen.
 //        \Dbafs::addResource($filepath);
         $files = $this->getDirContents($dir);
 
         foreach($files as $file) {
+            \Dbafs::addResource($file);
             $this->io->text($file);
         }
     }
