@@ -77,13 +77,21 @@ class AssignFilesCommand extends AbstractLockedCommand
 //        $files = $this->getDirContents($dir);
         \Dbafs::syncFiles();
 
+        $factory = $this->getContainer()->get('metamodels.factory');
+        $objMetaModel = $factory->getMetaModel("Downloads");
+
+        $members = \MemberModel::findAll();
         $files = \FilesModel::findMultipleByBasepath($path);
+        foreach ($members as $member) {
+            $this->io->text($member);
+        }
+
+
         foreach($files as $file) {
             $this->io->text($file->name);
         }
 
-        $factory = $this->getContainer()->get('metamodels.factory');
-        $objMetaModel = $factory->getMetaModel("Downloads");
+
 
     }
 }
