@@ -20,12 +20,8 @@ class AssignFilesCommand extends AbstractLockedCommand
     private $statusCode = 0;
     protected function configure(): void
     {
-        $commandHelp    = 'Erzeugt eine Testausgabe';
-        $parameterHelp  = 'Name, der in der Testausgabe verwendet werden soll';
-        $argument       = new InputArgument('name', InputArgument::REQUIRED, $parameterHelp);
-        // Hier könnten weitere Parameter folgen.
+        $commandHelp    = 'Aktualisiert Dateien';
         $this->setName('tomkon:assignfiles')
-            ->setDefinition([$argument])   // Die Parameter werden als Array übergeben, so kann es mehr als ein geben.
             ->setDescription($commandHelp);
     }
     protected function executeLocked(InputInterface $input, OutputInterface $output): ?int
@@ -41,20 +37,18 @@ class AssignFilesCommand extends AbstractLockedCommand
         // Deshalb wird hier das root directory ausgelesen.
         $rootDir = $this->getContainer()->getParameter('kernel.project_dir');
         */
-        // Hier wird der Kommandozeilenparameter ausgelesen.
-        $name = $input->getArgument('name');
         // Hier wird die eigentliche Verarbeitung auf gerufen.
-        $this->demoOutput($name);
+        $this->assignFiles();
         if (!empty($this->rows)) {
             $this->io->newLine();
             $this->io->table(['', 'Ouput', 'Target / Error'], $this->rows);
         }
         return $this->statusCode;
     }
-    protected function demoOutput($name): void
+    protected function assignFiles(): void
     {
         // Hier findet die eigentliche Verarbeitung statt.
         // Normalerweise würde hier z.B. ein Event aufgerufen.
-        $this->io->text("Hallo $name!");
+        $this->io->text("Hallo Welt!");
     }
 }
