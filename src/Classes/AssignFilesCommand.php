@@ -83,7 +83,8 @@ class AssignFilesCommand extends AbstractLockedCommand
         $members = \MemberModel::findAll();
         $files = \FilesModel::findMultipleByBasepath($path);
         foreach ($members as $member) {
-            $this->io->text($member);
+            var_dump($member);
+//            $this->io->text($member);
         }
 
 
