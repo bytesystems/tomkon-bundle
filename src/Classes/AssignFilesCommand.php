@@ -82,8 +82,8 @@ class AssignFilesCommand extends AbstractLockedCommand
             $this->io->text($file->name);
         }
 
-
-        $metaModel = \MetaModels\Factory::byTableName('mm_customer_files');
+        $factory = $this->getContainer()->get('metamodels.factory');
+        $objMetaModel = \MetaModels\IFactory::getMetaModel("Downloads");
 
     }
 }
