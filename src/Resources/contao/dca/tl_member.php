@@ -3,11 +3,14 @@
 
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 
+\Controller::loadLanguageFile('tl_files');
+\Controller::loadDataContainer('tl_files');
+
 $arrDca = &$GLOBALS['TL_DCA']['tl_member'];
 
 $arrDca['list']['operations']['editContent'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_member']['content'],
-    'href'  => 'table=tl_content',
+    'href'  => 'table=tl_files',
     'icon'  => 'article.gif'
 ];
 
