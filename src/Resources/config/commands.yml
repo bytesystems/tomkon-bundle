@@ -1,0 +1,6 @@
+services:
+    tomkon.command.assignfiles:
+        class: bytesystems\TomkonBundle\Classes\Command\AssignFilesCommand
+        tags: ['console.command']
+        calls:
+            - ["setFramework", ["@contao.framework"]]

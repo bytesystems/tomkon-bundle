@@ -28,5 +28,6 @@ class TomkonExtension extends Extension
         );
 
         $loader->load('services.yml');
+        $loader->load('commands.yml');
     }
 }
