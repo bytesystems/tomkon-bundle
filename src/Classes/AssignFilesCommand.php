@@ -24,6 +24,7 @@ class AssignFilesCommand extends AbstractLockedCommand
         $this->setName('tomkon:assignfiles')
             ->setDescription($commandHelp);
     }
+
     protected function executeLocked(InputInterface $input, OutputInterface $output): ?int
     {
         // Framework initialisieren
@@ -35,7 +36,7 @@ class AssignFilesCommand extends AbstractLockedCommand
         $this->di = $this->getContainer()->get('event_dispatcher');
         // TL_ROOT kann nicht injiziert werden und steht im Command nicht zur Verfügung!
         // Deshalb wird hier das root directory ausgelesen.
-        $rootDir = $this->getContainer()->getParameter('kernel.project_dir');
+
         */
         // Hier wird die eigentliche Verarbeitung auf gerufen.
         $this->assignFiles();
@@ -47,8 +48,10 @@ class AssignFilesCommand extends AbstractLockedCommand
     }
     protected function assignFiles(): void
     {
+        $rootDir = $this->getContainer()->getParameter('kernel.project_dir');
         // Hier findet die eigentliche Verarbeitung statt.
         // Normalerweise würde hier z.B. ein Event aufgerufen.
-        $this->io->text("Hallo Welt!");
+//        \Dbafs::addResource($filepath);
+        $this->io->text($rootDir);
     }
 }
