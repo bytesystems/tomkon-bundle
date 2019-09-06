@@ -78,11 +78,10 @@ class AssignFilesCommand extends AbstractLockedCommand
         \Dbafs::syncFiles();
 
         $files = \FilesModel::findMultipleByBasepath($path);
-        var_dump($files);
-//        foreach($files as $file) {
-//            //\Dbafs::addResource($file);
+        foreach($files as $file) {
+            var_dump($file);
 //            $this->io->text($file);
-//        }
+        }
 
 
 
