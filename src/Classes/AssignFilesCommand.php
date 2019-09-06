@@ -77,12 +77,12 @@ class AssignFilesCommand extends AbstractLockedCommand
 //        $files = $this->getDirContents($dir);
         \Dbafs::syncFiles();
 
-        $files = \FilesModel::findMultipleByPaths($path);
+        $files = \FilesModel::findMultipleByPaths([$path]);
         var_dump($files);
-        foreach($files as $file) {
-            //\Dbafs::addResource($file);
-            $this->io->text($file);
-        }
+//        foreach($files as $file) {
+//            //\Dbafs::addResource($file);
+//            $this->io->text($file);
+//        }
 
 
 
