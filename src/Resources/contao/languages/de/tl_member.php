@@ -6,8 +6,5 @@ $GLOBALS['TL_LANG']['tl_member']['hk_number'] = [
 
     ];
 
-$GLOBALS['TL_LANG']['tl_member']['hk_legend'] = [
-
-    'Liegenschaftsnummer'
-];
+$GLOBALS['TL_LANG']['tl_member']['hk_legend'] = 'Liegenschaftsnummer';
 
